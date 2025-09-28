@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Query Support System - India's First Farmer Community Network</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="container-fluid px-4">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <i class="fas fa-envelope me-2"></i>
+                        <span>info@kisaanhelpline.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h1 class="site-logo mb-0">Govar<span class="logo-highlight">dhan</span></h1>
+                </div>
+                <div class="col-md-3">
+                    <div class="right-nav">
+                        <div class="nav-menu">
+                            <!-- <a href="#" class="nav-item">Home</a>
+                            <a href="#" class="nav-item">About Us</a>
+                            <a href="#" class="nav-item">News</a>
+                            <div class="dropdown d-inline">
+                                <a href="#" class="nav-item">Services <i class="fas fa-chevron-down"></i></a>
+                            </div>
+                            <div class="dropdown d-inline">
+                                <a href="#" class="nav-item">Gallery <i class="fas fa-chevron-down"></i></a>
+                            </div>
+                            <div class="dropdown d-inline">
+                                <a href="#" class="nav-item">Crops <i class="fas fa-chevron-down"></i></a>
+                            </div>
+                            <a href="#" class="nav-item">Contact Us</a> -->
+                        </div>
+                        <!-- <div class="auth-buttons">
+                            <a href="#" class="auth-btn">About Us</a>
+                            <a href="#" class="auth-btn">Login</a>
+                            <a href="#" class="auth-btn">Register</a>
+                        </div> -->
+                        <div class="auth-buttons">
+                            <div class="dropdown">
+                                <button class="auth-btn" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Languages
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                    <li><a class="dropdown-item" href="#">Marathi</a></li>
+                                    <li><a class="dropdown-item" href="#">Hindi</a></li>
+                                    <li><a class="dropdown-item" href="#">Malayalam</a></li>
+                                    <li><a class="dropdown-item" href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="auth-btn">Login</a>
+                            <a href="#" class="auth-btn">Register</a>
+                        </div>
+                        <!-- ...existing code... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <video autoplay muted loop playsinline>
+    <source src="https://www.kisaanhelpline.com/public/video/video.mp4" type="video/mp4">
+    <!-- Add WebM/OGG sources if you want better browser support -->
+  </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="text-center">
+                <h1 class="hero-title">Farmer Query Support and Advisory</h1>
+                <p class="hero-subtitle">EXPRESS YOURSELF AND CONNECT WITH GLOBAL FARMING LOVERS</p>
+
+                <!-- Circular Farmer Image -->
+                <div class="farmer-circle">
+                    <img src="static/images/farmer_character.jpg" alt="Farmer Character" class="farmer-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Cards Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card" onclick="showPlaceholder('Digital Magazine')">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h5 class="feature-title">Crop Advisory</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card" onclick="showPlaceholder('Agriculture Event')">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h5 class="feature-title">Proactive Alerts</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card working" onclick="window.location.href='/mandi'">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h5 class="feature-title">Mandi Bhav</h5>
+                        <small class="working-badge">Working Feature</small>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card" onclick="showPlaceholder('Soil Testing Franchise')">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5 class="feature-title">Soil Health Advisory</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Chat Widget -->
+    <div class="floating-chat">
+        <div class="chat-icon">
+            <img src="static/images/chat.jpg" alt="Chat Icon" class="chat-img">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showPlaceholder(feature) {
+            alert(feature + ' feature is coming soon! Only Mandi Bhav is currently functional.');
+        }
+    </script>
+</body>
+</html>

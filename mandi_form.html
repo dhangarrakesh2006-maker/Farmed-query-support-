@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandi Bhav - Market Prices</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="container-fluid px-4">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <i class="fas fa-envelope me-2"></i>
+                        <span>info@kisaanhelpline.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h1 class="site-logo mb-0"><a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">Kisaan<span class="logo-highlight">Helpline</span></a></h1>
+                </div>
+                <div class="col-md-3">
+                    <div class="right-nav">
+                        <div class="nav-menu">
+                            <!-- <a href="{{ url_for('index') }}" class="nav-item">Home</a>
+                            <a href="#" class="nav-item">About Us</a>
+                            <a href="#" class="nav-item">News</a> -->
+                        </div>
+                        <!-- <div class="auth-buttons">
+                            <a href="#" class="auth-btn">Languages</a>
+                            <a href="#" class="auth-btn">Login</a>
+                            <a href="#" class="auth-btn">Register</a>
+                        </div> -->
+                        <!-- ...existing code... -->
+                        <div class="auth-buttons">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle auth-btn" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Languages
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                    <li><a class="dropdown-item" href="#">Marathi</a></li>
+                                    <li><a class="dropdown-item" href="#">Hindi</a></li>
+                                    <li><a class="dropdown-item" href="#">Malayalam</a></li>
+                                    <li><a class="dropdown-item" href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="auth-btn">Login</a>
+                            <a href="#" class="auth-btn">Register</a>
+                        </div>
+                        <!-- ...existing code... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-success text-white text-center">
+                        <h3><i class="fas fa-balance-scale me-2"></i>Mandi Bhav - Market Prices</h3>
+                        <p class="mb-0">Get latest crop prices from local markets</p>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url_for('mandi_results') }}" method="POST">
+                            <div class="mb-4">
+                                <label for="city" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Select City:
+                                </label>
+                                <select class="form-select form-select-lg" id="city" name="city" required>
+                                    <option value="">Choose your city...</option>
+                                    <option value="Shirpur">Shirpur</option>
+                                    <option value="Amalner">Amalner</option>
+                                    <option value="Chopda">Chopda</option>
+                                    <option value="Muktai Nagar">Muktai Nagar</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="crop" class="form-label">
+                                    <i class="fas fa-seedling me-2"></i>Select Crop:
+                                </label>
+                                <select class="form-select form-select-lg" id="crop" name="crop" required>
+                                    <option value="">Choose your crop...</option>
+                                    <option value="Banana">Banana</option>
+                                    <option value="Cotton">Cotton</option>
+                                    <option value="Wheat">Wheat</option>
+                                    <option value="Sugarcane">Sugarcane</option>
+                                    <option value="Onion">Onion</option>
+                                </select>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fas fa-search me-2"></i>Get Market Prices
+                                </button>
+                                <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Back to Home
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Note:</strong> This feature shows real-time market prices from local mandis across Maharashtra.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

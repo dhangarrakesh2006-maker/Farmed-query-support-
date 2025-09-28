@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandi Bhav Results - {{ city }} {{ crop }} Prices</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="container-fluid px-4">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <i class="fas fa-envelope me-2"></i>
+                        <span>info@kisaanhelpline.com</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h1 class="site-logo mb-0"><a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">Kisaan<span class="logo-highlight">Helpline</span></a></h1>
+                </div>
+                <div class="col-md-3">
+                    <div class="right-nav">
+                        <div class="nav-menu">
+                            <a href="{{ url_for('index') }}" class="nav-item">Home</a>
+                            <a href="#" class="nav-item">About Us</a>
+                            <a href="#" class="nav-item">News</a>
+                        </div>
+                        <div class="auth-buttons">
+                            <a href="#" class="auth-btn">Career</a>
+                            <a href="#" class="auth-btn">Login</a>
+                            <a href="#" class="auth-btn">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-1">
+                            <i class="fas fa-chart-line me-2"></i>Market Prices for {{ crop }} in {{ city }}
+                        </h3>
+                        <p class="mb-0">Latest prices from local mandis</p>
+                    </div>
+                    <div class="card-body">
+                        {% if results %}
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-success">
+                                        <tr>
+                                            <th scope="col">
+                                                <i class="fas fa-store me-2"></i>Market Name
+                                            </th>
+                                            <th scope="col">
+                                                <i class="fas fa-rupee-sign me-2"></i>Price
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for market, price in results %}
+                                        <tr>
+                                            <td class="fw-semibold">{{ city }} {{ market }}</td>
+                                            <td class="text-success fw-bold">{{ price }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Found <strong>{{ results|length }}</strong> markets selling {{ crop }} in {{ city }}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning text-center">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <h5>No data available for {{ crop }} in {{ city }}</h5>
+                                <p class="mb-0">Please try a different city or crop combination.</p>
+                            </div>
+                        {% endif %}
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                            <a href="{{ url_for('mandi_form') }}" class="btn btn-outline-success me-md-2">
+                                <i class="fas fa-search me-2"></i>Search Again
+                            </a>
+                            <a href="{{ url_for('index') }}" class="btn btn-success">
+                                <i class="fas fa-home me-2"></i>Back to Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Live Data:</strong> Prices are updated regularly from {{ city }} markets.
+                        Last updated: {{ moment().format('MMMM Do YYYY, h:mm a') if moment else 'Recently' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
